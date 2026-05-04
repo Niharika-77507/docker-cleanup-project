@@ -1,0 +1,19 @@
+name: Docker Cleanup
+
+on:
+  schedule:
+    - cron: '0 * * * *'
+  workflow_dispatch:
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Run cleanup script
+      run: |
+        chmod +x cleanup.sh
+        ./cleanup.sh
